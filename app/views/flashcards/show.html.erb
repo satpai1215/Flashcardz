@@ -1,11 +1,12 @@
 <h1><%= link_to @deck.title, @deck %></h1>
 <%= link_to "Edit Card", edit_deck_flashcard_path(@deck, @flashcard) %> | 
 <%= link_to "Delete Card", deck_flashcard_path(@deck, @flashcard), method: :delete, data: {confirm: "You sure?"} %>
-<div class="row">	
-	<div class="flashcard-container span10 offset1">
+
+<div class="row">
+	<div class="flashcard-container col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2 ">
 		<div class="card">
-			<div class="card-front"><%= @front_content %></div>
-			<div class="card-back"><%= @back_content %></div>
+			<div class="card-front"><span><%= @front_content %></span></div>
+			<div class="card-back"><span><%= @back_content %></span></div>
 		</div>
 	</div>
 </div>
