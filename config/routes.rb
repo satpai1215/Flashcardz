@@ -1,10 +1,5 @@
 Yogaexpress::Application.routes.draw do
 
-  get "deck/index"
-  get "deck/show"
-  get "deck/edit"
-  get "deck/update"
-  get "deck/destroy"
   root "pages#home"
 
   resources :decks do
