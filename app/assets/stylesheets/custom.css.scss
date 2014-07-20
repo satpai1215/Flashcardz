@@ -2,6 +2,9 @@
 
 body {
   padding-top: 60px;
+}
+
+#main-container {
   text-align: center;
 }
 
@@ -57,6 +60,13 @@ input, textarea, select, .uneditable-input {
 
 input {
   height: auto !important;
+  width: 100%;
+}
+
+form {
+  label {
+    text-align: left;
+  }
 }
 
 
@@ -71,6 +81,12 @@ input {
 .field_with_errors {
   @extend .control-group;
   @extend .error;
+}
+
+.new_flashcard, .edit_flashcard {
+  textarea {
+    width: 100%;
+  }
 }
 
 /* Deck Index */
@@ -89,6 +105,7 @@ input {
 
 /* Flashcard Show */
 .flashcard-container { 
+  margin-top: 10px;
   position: relative;
   -webkit-perspective: 800;
   cursor: pointer;

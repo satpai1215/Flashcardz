@@ -1,7 +1,7 @@
 <h1>Edit Flashcard</h1>
 
 <div class="row">
-	<div class="span10">
+	<div class="span8 offset2">
 		<%= form_for [@deck, @flashcard] do |f| %>
 			<%= render 'fields', f: f %>
 			<div><%= f.submit "Save Changes", class: 'btn btn-large btn-primary' %></div>

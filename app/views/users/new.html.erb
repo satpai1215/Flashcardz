@@ -1,7 +1,7 @@
 <h1>Create Account</h1>
 
 <div class="row">
-	<div class="span6">
+	<div class="span6 offset3">
 		<%= form_for(@user) do |f| %>
 			<%= render 'fields', f: f %>
 			<div><%= f.submit "Create My Account", class: 'btn btn-primary' %></div>

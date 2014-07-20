@@ -3,13 +3,6 @@ class FlashcardsController < ApplicationController
   before_action :get_flashcard_show, only: :show
   before_action :get_flashcard, except: [:new, :create, :show]
 
-  def show
-    @flashcards = @deck.flashcards.order('created_at ASC')
-    @front_content = @flashcard.side_one
-    @back_content = @flashcard.side_two
-
-  end
-
   def new
     @flashcard = @deck.flashcards.build
   end
@@ -21,7 +14,14 @@ class FlashcardsController < ApplicationController
     else
       render 'new'
     end
+  end
 
+  def show
+    @flashcards = @deck.flashcards.order('created_at ASC')
+    @front_content = @flashcard.side_one
+    @back_content = @flashcard.side_two
+
+    get_card_nav_ids
   end
 
   def edit
@@ -61,6 +61,20 @@ private
 
   def get_flashcard_show
     @flashcard = @deck.flashcards[params[:card_id].to_i - 1]
+    if @flashcard.nil?
+      redirect_to @deck, notice: "Requested flashcard does not exist."
+    end
+  end
+
+  def get_card_nav_ids
+    index = params[:card_id].to_i
+    deck_size = @deck.flashcards.length
+
+    @prev_index = (index == 1 ? deck_size : index - 1)
+    @next_index = (index >= deck_size ? 1 : index + 1)
+
+    r = Random.new
+    @random_index = r.rand(1..deck_size)
   end
 
 end

@@ -1,14 +1,14 @@
 <div class="row"><h1><%= link_to @deck.title, @deck %></h1></div>
 <div class="row">
-	<%= link_to "Edit Card", edit_deck_flashcard_path(@deck, @flashcard) %> | 
-	<%= link_to "Delete Card", deck_flashcard_path(@deck, @flashcard), method: :delete, data: {confirm: "You sure?"} %>
+	<%= link_to "Edit Card", edit_deck_flashcard_path(@deck, @flashcard.id) %> | 
+	<%= link_to "Delete Card", deck_flashcard_path(@deck, @flashcard.id), method: :delete, data: {confirm: "You sure?"} %>
 </div>
 
 <div class="row">
 	<div class ="flashcard-nav btn-group">
-		<%= link_to "Prev", "#", class: "prev-link btn btn-primary" %>
-		<%= link_to "Random", "#", class: "rand-link btn btn-primary" %>
-		<%= link_to "Next", "#", class: "next-link btn btn-primary" %>
+		<%= link_to "Prev", deck_flashcard_path(@deck, @prev_index), class: "prev-link btn btn-primary" %>
+		<%= link_to "Random", deck_flashcard_path(@deck, @random_index), class: "rand-link btn btn-primary" %>
+		<%= link_to "Next", deck_flashcard_path(@deck, @next_index), class: "next-link btn btn-primary" %>
 	</div>
 </div>
 
