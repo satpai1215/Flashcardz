@@ -1,9 +1,9 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="navbar-inner">
         <div class="container">
-          <%= link_to "Yoga2Go", root_path, id: "logo" %>
+          <%= link_to app_name, root_path, id: "logo" %>
           <nav>
-            <ul class="nav pull-right">
+            <ul class="nav pull-right navbar-nav">
               <li><%= link_to "Home", root_path %></li>
               <% if signed_in? %>
                 <li><%= link_to "My Decks", decks_path %></li>

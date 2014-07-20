@@ -1,10 +1,10 @@
 <h1>Update Your Email Address</h1>
 
 <div class="row">
-	<div class="span10">
+	<div class="span6">
 		<%= form_for(@user) do |f| %>
 			<%= render 'fields', f: f %>
-			<%= f.submit "Save Changes", class: 'btn btn-large btn-primary' %>
+			<div><%= f.submit "Save Changes", class: 'btn btn-primary' %></div>
 		<% end %>
 	</div>
 </div>	

@@ -28,4 +28,4 @@ def secure_token
   end
 end
 
-Yogaexpress::Application.config.secret_key_base = secure_token
+Flashcards::Application.config.secret_key_base = secure_token

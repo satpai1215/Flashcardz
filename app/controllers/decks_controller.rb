@@ -21,7 +21,7 @@ class DecksController < ApplicationController
   end
 
   def show
-    @flashcards = @deck.flashcards.paginate(page: params[:page]).order('created_at ASC')
+    @flashcards = @deck.flashcards.order('created_at ASC')
   end
 
   def edit

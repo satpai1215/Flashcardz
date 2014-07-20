@@ -1,9 +1,10 @@
 class FlashcardsController < ApplicationController
   before_action :correct_user
-  before_action :get_flashcard, except: [:new, :create]
+  before_action :get_flashcard_show, only: :show
+  before_action :get_flashcard, except: [:new, :create, :show]
 
   def show
-    @flashcards = @deck.flashcards.paginate(page: params[:page], per_page: 1).order('created_at ASC')
+    @flashcards = @deck.flashcards.order('created_at ASC')
     @front_content = @flashcard.side_one
     @back_content = @flashcard.side_two
 
@@ -55,7 +56,11 @@ private
   end
 
   def get_flashcard
-    @flashcard = @deck.flashcards.find_by_id(params[:id])
+    @flashcard = @deck.flashcards.find(params[:id])
+  end
+
+  def get_flashcard_show
+    @flashcard = @deck.flashcards[params[:card_id].to_i - 1]
   end
 
 end
