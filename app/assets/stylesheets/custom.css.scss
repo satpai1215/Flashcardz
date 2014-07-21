@@ -165,7 +165,9 @@ form {
   -webkit-transform: rotatey(-180deg);
   }
 
-.clearfix {
-  float: none;
+@media (max-width: 767px) {
+  .card {
+    width: 90%;
+  }
 }
 
