@@ -68,7 +68,7 @@ input {
 form {
   label {
     text-align: left;
-    display: inline-block;
+    display: block;
     width: 70%;
   }
 }
@@ -93,6 +93,10 @@ form {
 .new_flashcard, .edit_flashcard {
   textarea {
     width: 70%;
+    font-size: 2em; 
+    font-weight: bold;
+    padding: 10px;
+
   }
 }
 
