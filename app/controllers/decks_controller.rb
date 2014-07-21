@@ -29,7 +29,7 @@ class DecksController < ApplicationController
 
   def update
     if @deck.update_attributes(deck_params)
-      redirect_to decks_path, notice: "Deck successfully updated"
+      redirect_to @deck, notice: "Deck successfully updated"
     else
       render 'edit'
     end

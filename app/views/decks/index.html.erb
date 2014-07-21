@@ -1,8 +1,15 @@
 <h1>Your Flashcard Decks:</h1>
 <div><%= link_to "Create New Deck", new_deck_path %>
+<p><br/>Select a Flashcard Deck Below:</p>
+<div class='deck_pagination'>
+	<%= will_paginate @decks %>
+</div>
+
 <ol class='deck-list'>
-	<p>Select a Flashcard Deck Below:</p>
-	<%= will_paginate @decks %>
 	<%= render @decks %>
-	<%= will_paginate @decks %>
 </ol>
+
+<div class='deck_pagination'>
+	<%= will_paginate @decks %>
+</div>
+

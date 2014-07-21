@@ -2,7 +2,7 @@
 
 <div class="row">
 	<div class="span8 offset2">
-		<%= form_for [@deck, @flashcard] do |f| %>
+		<%= form_for(@flashcard, :url => deck_flashcard_path(@deck, @flashcard.id)) do |f| %>
 			<%= render 'fields', f: f %>
 			<div><%= f.submit "Save Changes", class: 'btn btn-large btn-primary' %></div>
 		<% end %>

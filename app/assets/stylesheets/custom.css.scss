@@ -93,7 +93,7 @@ form {
 .deck-list, {
   list-style-type:none;
   padding: 0;
-  margin: 10px auto;
+  margin: 5px auto;
 }
 
 /* Deck Show */
@@ -112,7 +112,8 @@ form {
 }
 
 .card {
-  width: 100%;
+  width: 70%;
+  margin: 0 auto;
   height: 20em;
   text-align: center;
   -webkit-transform-style: preserve-3d;
@@ -147,3 +148,8 @@ form {
   .flipped {
   -webkit-transform: rotatey(-180deg);
   }
+
+.clearfix {
+  float: none;
+}
+

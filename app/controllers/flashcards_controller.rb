@@ -44,7 +44,8 @@ class FlashcardsController < ApplicationController
 
   def destroy
     @flashcard.destroy
-    redirect_to @deck, notice: "Flashcard was removed from deck"
+    card_index = (params[:page].to_i <= 1 ? 1 : params[:page].to_i - 1)
+    redirect_to deck_flashcards_path(@deck, page: card_index), notice: "Flashcard was removed from deck"
   end
 
 private
@@ -64,16 +65,5 @@ private
     @flashcard = Flashcard.find(params[:id])
   end
 
-
-  def get_card_nav_ids
-    index = params[:card_id].to_i
-    deck_size = @deck.flashcards.length
-
-    @prev_index = (index == 1 ? deck_size : index - 1)
-    @next_index = (index >= deck_size ? 1 : index + 1)
-
-    r = Random.new
-    @random_index = r.rand(1..deck_size)
-  end
 
 end
