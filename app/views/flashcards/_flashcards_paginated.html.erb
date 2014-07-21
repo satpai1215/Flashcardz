@@ -1,17 +1,16 @@
 
-	<%= link_to "Edit Card", edit_deck_flashcard_path(@deck, @flashcard.id, page: params[:page]) %> |
-	<%= link_to "Delete Card", deck_flashcard_path(@deck, @flashcard.id, page: params[:page]), method: :delete, data: {confirm: "You sure?"} %>
+<%= link_to "Edit Card", edit_deck_flashcard_path(@deck, @flashcard.id, page: params[:page]) %> |
+<%= link_to "Delete Card", deck_flashcard_path(@deck, @flashcard.id, page: params[:page]), method: :delete, data: {confirm: "You sure?"} %>
 
 <div class="flashcard-container">
 	<div class="row">
 	<div class='card_pagination col-md-8 col-md-offset-2 col-xs-12"'>
-		
-			<%#= link_to "← PREV", deck_flashcards_path(@deck, {page: @prev_index}), {class: @prev_classes, rel: "prev"} %>
-			<%#= link_to "NEXT →", deck_flashcards_path(@deck, {page: @next_index}), {class: @next_classes, rel: "next"} %>
-		
 		<%= will_paginate @flashcards, page_links: false %>
-		<div class="random-link-container"><%= link_to "RANDOM", deck_flashcards_path(@deck, page: @random_index), {class: "random_page"} %></div>
+		<div class="random-link-container">
+			<%= link_to "RANDOM", deck_flashcards_path(@deck, page: @random_index), {class: "random_page"} %>
+		</div>
 	</div>
+	
 	<% @flashcards.each do |card| %>
 		<div class="col-md-8 col-md-offset-2 col-xs-12">
 			<div class="card">
