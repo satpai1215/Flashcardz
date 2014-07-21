@@ -3,7 +3,7 @@ class Flashcard < ActiveRecord::Base
 
 	before_create :set_card_id
 
-	default_scope {order('created_at ASC')}
+	default_scope {order('created_at DESC')}
 
 
 

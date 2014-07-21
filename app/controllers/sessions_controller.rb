@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
   	if user && user.authenticate(params[:password])
   		sign_in user
   		flash[:success] = "Sign In Successful"
-  		redirect_to signin_path 
+  		redirect_to root_path 
   	else
   		flash[:danger] = 'Invalid email/password combination'
   		redirect_to signin_path
@@ -17,6 +17,7 @@ class SessionsController < ApplicationController
 
   def destroy
     sign_out
-    redirect_to root_url, notice: "Signed out successfully"
+    flash[:success] = "Signed out successfully"
+    redirect_to root_url
   end
 end

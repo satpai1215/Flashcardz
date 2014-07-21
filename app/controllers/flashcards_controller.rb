@@ -5,8 +5,11 @@ class FlashcardsController < ApplicationController
 
   def index
     card_number = params[:page] || 1
-    @flashcards = @deck.flashcards.paginate(page: card_number.to_i, per_page: 1)
-    @flashcard = @deck.flashcards[card_number.to_i-1]
+    card_number = card_number.to_i
+    @flashcards = @deck.flashcards.paginate(page: card_number, per_page: 1)
+    @flashcard = @deck.flashcards[card_number - 1]
+
+    generate_pagination(card_number)
   end
   
   def new
@@ -25,6 +28,7 @@ class FlashcardsController < ApplicationController
 
   def show
     @flashcards = @deck.flashcards.paginate(page: params[:page], per_page: 1)
+
     @front_content = @flashcard.side_one
     @back_content = @flashcard.side_two
   end
@@ -66,6 +70,15 @@ private
 
   def get_flashcard
     @flashcard = Flashcard.find(params[:id])
+  end
+
+  def generate_pagination(card_number)
+    @prev_index = card_number - 1
+    @next_index = card_number + 1
+
+    @prev_classes = "previous_page" + (@prev_index <= 0 ? " disabled" : "")
+    @next_classes = "next_page" + (@next_index > @deck.flashcards.length ? " disabled" : "")
+
   end
 
 
