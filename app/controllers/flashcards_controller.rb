@@ -1,8 +1,14 @@
 class FlashcardsController < ApplicationController
   before_action :correct_user
-  before_action :get_flashcard_show, only: :show
-  before_action :get_flashcard, except: [:new, :create, :show]
+  #before_action :get_flashcard_show, only: :show
+  before_action :get_flashcard, except: [:new, :create, :index]
 
+  def index
+    card_number = params[:page] || 1
+    @flashcards = @deck.flashcards.paginate(page: card_number.to_i, per_page: 1)
+    @flashcard = @deck.flashcards[card_number.to_i-1]
+  end
+  
   def new
     @flashcard = @deck.flashcards.build
   end
@@ -17,19 +23,19 @@ class FlashcardsController < ApplicationController
   end
 
   def show
+    @flashcards = @deck.flashcards.paginate(page: params[:page], per_page: 1)
     @front_content = @flashcard.side_one
     @back_content = @flashcard.side_two
-
-    get_card_nav_ids
   end
 
   def edit
+    
   end
 
   def update
     if @flashcard.update_attributes(flashcard_params)
       flash[:success] = "Flashcard updated successully."
-      redirect_to deck_flashcard_path(@deck, @flashcard)
+      redirect_to deck_flashcards_path(@deck, page: params[:page])
     else
       render 'edit'
     end
@@ -55,15 +61,9 @@ private
   end
 
   def get_flashcard
-    @flashcard = @deck.flashcards.find(params[:id])
+    @flashcard = Flashcard.find(params[:id])
   end
 
-  def get_flashcard_show
-    @flashcard = @deck.flashcards[params[:card_id].to_i - 1]
-    if @flashcard.nil?
-      redirect_to @deck, notice: "Requested flashcard does not exist."
-    end
-  end
 
   def get_card_nav_ids
     index = params[:card_id].to_i

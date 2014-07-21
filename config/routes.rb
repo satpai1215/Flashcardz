@@ -3,8 +3,8 @@ Flashcards::Application.routes.draw do
   root "pages#home"
 
   resources :decks do
-    resources :flashcards, except: [:show]
-    match '/flashcards/:card_id', to:'flashcards#show', via: 'get'
+    resources :flashcards
+    #match '/flashcards/:card_id', to:'flashcards#show', via: 'get'
   end
   resources :sessions,  only: [:new, :create, :destroy]
   resources :users

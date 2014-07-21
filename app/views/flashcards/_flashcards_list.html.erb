@@ -1,0 +1,7 @@
+<p>Select a Flashcard Below:</p>
+
+<%#= will_paginate @flashcards %>
+<% @flashcards.each_with_index do |card, index| %>
+	<li><%= link_to card.side_one, deck_flashcards_path(@deck, page: index+1) %></li>
+<% end %>
+<%#= will_paginate @flashcards %>
