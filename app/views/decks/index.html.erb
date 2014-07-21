@@ -2,5 +2,7 @@
 <div><%= link_to "Create New Deck", new_deck_path %>
 <ol class='deck-list'>
 	<p>Select a Flashcard Deck Below:</p>
+	<%= will_paginate @decks %>
 	<%= render @decks %>
+	<%= will_paginate @decks %>
 </ol>

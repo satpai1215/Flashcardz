@@ -17,7 +17,6 @@ class FlashcardsController < ApplicationController
   end
 
   def show
-    @flashcards = @deck.flashcards.order('created_at ASC')
     @front_content = @flashcard.side_one
     @back_content = @flashcard.side_two
 

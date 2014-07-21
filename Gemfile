@@ -8,6 +8,7 @@ gem 'sprockets', '2.11.0'
 gem 'sass', '3.2.13'
 gem 'bcrypt-ruby', '3.1.2'
 gem 'will_paginate', '3.0.4'
+gem 'faker', '1.4.2'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'

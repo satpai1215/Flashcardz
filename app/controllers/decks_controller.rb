@@ -17,11 +17,11 @@ class DecksController < ApplicationController
   end
 
   def index
-    @decks = current_user.decks
+    @decks = current_user.decks.paginate(page: params[:page], per_page: 20)
   end
 
   def show
-    @flashcards = @deck.flashcards.order('created_at ASC')
+    @flashcards = @deck.flashcards.paginate(page: params[:page], per_page: 20).order('created_at ASC')
   end
 
   def edit

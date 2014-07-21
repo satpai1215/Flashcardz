@@ -5,9 +5,10 @@
 <ul class='flashcard-list'>
 	<% if @flashcards.any? %>
 		<p>Select a Flashcard Below:</p>
+		<%= will_paginate @flashcards %>
 		<% @flashcards.each_with_index do |card, index| %>
-			<li><%= link_to "Card ##{index+1}", deck_flashcard_path(@deck, index + 1) %></li>
+			<li><%= link_to card.side_one, deck_flashcard_path(@deck, index + 1) %></li>
 		<% end %>
-		<%#= will_paginate @flashcards %>
+		<%= will_paginate @flashcards %>
 	<% end %>
 </ul>	
