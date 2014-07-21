@@ -3,7 +3,7 @@
 	<%= link_to "Delete Card", deck_flashcard_path(@deck, @flashcard.id, page: params[:page]), method: :delete, data: {confirm: "You sure?"} %>
 </div>
 
-<div class="flashcard-container span10 offset1">
+<div class="flashcard-container span10">
 	<div class='card_pagination'>
 		<%= will_paginate @flashcards, page_links: false %>
 	</div>
