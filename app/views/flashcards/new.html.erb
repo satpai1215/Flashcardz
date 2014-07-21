@@ -2,7 +2,7 @@
 <%= link_to "Back to Deck", @deck %>
 
 <div class="row">
-	<div class="span6 offset3">
+	<div class="col-md-8 col-md-offset-2 col-xs-12">
 		<%= form_for [@deck, @flashcard] do |f| %>
 			<%= render 'fields', f: f %>
 			<div><%= f.submit "Create Flashcard", class: 'btn btn-primary' %></div>
