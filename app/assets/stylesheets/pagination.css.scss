@@ -1,7 +1,7 @@
 .pagination {
-  background: white;
-  cursor: default;
+  background: none;
   margin: 5px auto;
+  cursor: default;
   /* self-clearing method: */ }
 .pagination a, .pagination span, .pagination em {
     padding: 0.2em 0.5em;
@@ -22,9 +22,10 @@
     text-decoration: none;
     color: #105cb6;
     border: 1px solid #9aafe5; }
-  .pagination a:hover, .pagination a:focus, .card_pagination a:hover, .card_pagination a:focus {
+  .pagination a:hover, .pagination a:focus, .random_page:hover, .random_page:focus {
       color: #000033;
-      border-color: #000033; }
+      border-color: #000033;
+      cursor: pointer; }
 .pagination .page_info {
     background: #2e6ab1;
     color: white;
@@ -73,9 +74,11 @@
 .random-link-container {
   position: absolute;
   top: 15%;
-  left: 0;
-  right: 0;
+  left: 40%;
+  right: 40%;
+  cursor: default;
 }
 .card_pagination .random_page {
   padding: 0.3em 0.5em;
+  cursor: pointer;
 }

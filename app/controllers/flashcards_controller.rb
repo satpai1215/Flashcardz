@@ -9,7 +9,7 @@ class FlashcardsController < ApplicationController
     @flashcards = @deck.flashcards.paginate(page: card_number, per_page: 1)
     @flashcard = @deck.flashcards[card_number - 1]
 
-    
+  
     @random_index = Random.rand(1..@deck.flashcards.length)
   end
   
