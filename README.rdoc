@@ -1,4 +1,4 @@
-== FLASHCARD APP
+== FLASHCARDZ
 
 flashcardz.heroku.app
 
