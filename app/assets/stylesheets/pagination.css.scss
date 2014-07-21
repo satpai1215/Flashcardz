@@ -55,6 +55,9 @@
 
 
 /* Flashcard Pagination */
+.card_pagination {
+  position: relative;
+}
 .card_pagination .pagination {
     display: block;
     width: 70%;
@@ -66,5 +69,13 @@
 .card_pagination .previous_page {
   float: left;
 }
+
+.random-link-container {
+  position: absolute;
+  top: 15%;
+  left: 0;
+  right: 0;
+}
 .card_pagination .random_page {
+  padding: 0.3em 0.5em;
 }

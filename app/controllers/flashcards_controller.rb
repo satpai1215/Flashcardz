@@ -9,7 +9,8 @@ class FlashcardsController < ApplicationController
     @flashcards = @deck.flashcards.paginate(page: card_number, per_page: 1)
     @flashcard = @deck.flashcards[card_number - 1]
 
-    generate_pagination(card_number)
+    
+    @random_index = Random.rand(1..@deck.flashcards.length)
   end
   
   def new
@@ -70,15 +71,6 @@ private
 
   def get_flashcard
     @flashcard = Flashcard.find(params[:id])
-  end
-
-  def generate_pagination(card_number)
-    @prev_index = card_number - 1
-    @next_index = card_number + 1
-
-    @prev_classes = "previous_page" + (@prev_index <= 0 ? " disabled" : "")
-    @next_classes = "next_page" + (@next_index > @deck.flashcards.length ? " disabled" : "")
-
   end
 
 
