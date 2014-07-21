@@ -10,7 +10,7 @@ Flashcards::Application.routes.draw do
   resources :users
 
   match '/signout', to: 'sessions#destroy', via: 'delete'
-  match '/signin',  to: 'sessions#new',     via: 'get'
+  match '/signin',  to: 'sessions#new',     via: 'get',   as: 'signin'
   match '/signup',  to: 'users#new',        via: 'get'
 
 

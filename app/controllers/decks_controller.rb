@@ -10,7 +10,8 @@ class DecksController < ApplicationController
   def create
     @deck = current_user.decks.build(deck_params)
     if @deck.save
-      redirect_to deck_path(@deck), notice: "Deck created successfully."
+      flash[:info] = "Deck created successfully."
+      redirect_to deck_path(@deck)
     else
       render 'new'
     end
@@ -29,7 +30,8 @@ class DecksController < ApplicationController
 
   def update
     if @deck.update_attributes(deck_params)
-      redirect_to @deck, notice: "Deck successfully updated"
+       flash[:info] = "Deck successfully updated."
+      redirect_to @deck
     else
       render 'edit'
     end
@@ -37,7 +39,8 @@ class DecksController < ApplicationController
 
   def destroy
     @deck.destroy
-    redirect_to decks_path, notice: "Deck deleted successfully"
+    flash[:info] = "Deck deleted successfully."
+    redirect_to decks_path
   end
 
 
@@ -47,13 +50,17 @@ private
   end
 
   def signed_in_user
-    redirect_to root_path, notice: "You must be signed in to do that." unless signed_in?
+    unless signed_in?
+      flash[:info] = "You must be signed in to do that."
+      redirect_to root_path
+    end
   end
 
   def correct_user
     @deck = Deck.find(params[:id])
     unless @deck.belongs_to?(current_user)
-      redirect_to root_path, notice: "You are not authorized to do that"
+      flash[:info] = "You are not authorized to do that"
+      redirect_to root_path
     end
   end
 

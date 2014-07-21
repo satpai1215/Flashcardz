@@ -16,7 +16,8 @@ class FlashcardsController < ApplicationController
   def create
     @flashcard = @deck.flashcards.build(flashcard_params)
     if @flashcard.save
-      redirect_to @deck, notice: "Flashcard Added"
+      flash[:info] = "Flashcard Added."
+      redirect_to @deck
     else
       render 'new'
     end
@@ -29,7 +30,7 @@ class FlashcardsController < ApplicationController
   end
 
   def edit
-    
+
   end
 
   def update
@@ -45,7 +46,8 @@ class FlashcardsController < ApplicationController
   def destroy
     @flashcard.destroy
     card_index = (params[:page].to_i <= 1 ? 1 : params[:page].to_i - 1)
-    redirect_to deck_flashcards_path(@deck, page: card_index), notice: "Flashcard was removed from deck"
+    flash[:info] = "Flashcard was removed from deck"
+    redirect_to deck_flashcards_path(@deck, page: card_index)
   end
 
 private
@@ -57,7 +59,8 @@ private
   def correct_user
     @deck = Deck.find(params[:deck_id])
     unless @deck.belongs_to?(current_user)
-      redirect_to root_path, notice: "You are not authorized to do that"
+      flash[:danger] = "You are not authorized to do that"
+      redirect_to root_path
     end
   end
 
