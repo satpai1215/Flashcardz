@@ -4,3 +4,6 @@ flashcardz.heroku.app
 
 Mobile-friendly flashcard app built with Ruby and Rails.  Allows creation of Flashcard decks for on-the-go studying.
 
+Guest Login:
+* Email: test@example.com
+* Password: foobar
