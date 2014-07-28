@@ -4,6 +4,8 @@ Flashcards::Application.routes.draw do
 
   resources :decks do
     resources :flashcards
+    match '/new_from_file',  to: "flashcards#new_from_file", via: 'get',  as: 'new_from_file'
+    match '/upload_cards',  to: "flashcards#upload_cards", via: 'post',  as: 'upload'
     #match '/flashcards/:card_id', to:'flashcards#show', via: 'get'
   end
   resources :sessions,  only: [:new, :create, :destroy]

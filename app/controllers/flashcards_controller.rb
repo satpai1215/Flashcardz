@@ -1,7 +1,9 @@
+require 'roo'
+
 class FlashcardsController < ApplicationController
   before_action :correct_user
   #before_action :get_flashcard_show, only: :show
-  before_action :get_flashcard, except: [:new, :create, :index]
+  before_action :get_flashcard, except: [:new, :create, :index, :upload_cards, :new_from_file]
 
   def index
     card_number = params[:page] || 1
@@ -15,6 +17,28 @@ class FlashcardsController < ApplicationController
   
   def new
     @flashcard = @deck.flashcards.build
+  end
+
+  def new_from_file
+  end
+
+  def upload_cards
+    sheet = open_spreadsheet(params[:spreadsheet_path])
+    
+    if sheet
+      (1..sheet.last_row).each do |r|
+        row = sheet.row(r)
+        side_one = row[0]
+        side_two = row[1]
+
+       @deck.flashcards.create(side_one: side_one, side_two: side_two)
+      end
+      flash[:info] = "Flashcards Uploaded Successfully."
+      redirect_to @deck
+    else
+      flash[:danger] = "Incorrect File Type"
+      redirect_to deck_new_from_file_path
+    end
   end
 
   def create
@@ -71,6 +95,19 @@ private
 
   def get_flashcard
     @flashcard = Flashcard.find(params[:id])
+  end
+
+  def open_spreadsheet(file)
+    if file.nil?
+      false
+    else
+      case File.extname(file.original_filename)
+      when '.csv' then Roo::Csv.new(file.path, nil, :ignore)
+      when '.xls' then Roo::Excel.new(file.path, nil, :ignore)
+      when '.xlsx' then Roo::Excelx.new(file.path, nil, :ignore)
+      else false
+      end
+    end
   end
 
 

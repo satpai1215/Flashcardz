@@ -72,6 +72,7 @@ input {
   padding: 5px 10px;
 }
 
+
 form {
   label {
     text-align: left;
@@ -107,6 +108,30 @@ form {
 
   }
 }
+
+/* new_from_file.html.erb */
+#upload_steps {
+  padding-left: 0;
+  display: inline-block;
+  list-style-position: inside;
+
+  .upload_steps_item {
+    text-align: left;
+    padding-left: 10px;
+  }
+}
+
+#choose_file_input {
+  #spreadsheet_path {
+    border: none;
+    padding: 5px;
+    line-height: initial;
+    width: inherit;
+    margin: 10px auto;
+    padding-left: 100px;
+  }
+}
+
 
 /* Deck Index */
 .deck-list, {

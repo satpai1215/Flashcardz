@@ -1,0 +1,19 @@
+<h1>Upload Flashcards from Excel</h1>
+<%= link_to "Back to Deck", @deck %>
+
+<div class="row">
+	<div class="col-md-8 col-md-offset-2 col-xs-12">
+		<%= form_tag deck_upload_path(@deck), multipart: true do %>
+			<ol id = "upload_steps">
+				<h4>Spreadsheet Requirements:</h4>
+				<li class="upload_steps_item">Make sure the file is has extension .csv/.xls/.xlsx</li>
+				<li class="upload_steps_item">Place flashcard contents in first sheet of workbook, Row 1</li>
+				<li class="upload_steps_item">Write contents of side one in Column A</li>
+				<li class="upload_steps_item">Write contents of side two in Column B</li>
+			</ol>
+
+			<div class = "field fileUpload" id = "choose_file_input"><%= file_field_tag :spreadsheet_path %></div>
+			<div><%= submit_tag "Create Flashcards", class: 'btn btn-primary' %></div>
+		<% end %>
+	</div>
+</div>
