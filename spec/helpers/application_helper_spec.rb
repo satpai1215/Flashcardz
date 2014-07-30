@@ -1,15 +1,20 @@
 require 'spec_helper'
 
 # Specs in this file have access to a helper object that includes
-# the DeckHelper. For example:
+# the UsersHelper. For example:
 #
-# describe DeckHelper do
+# describe UsersHelper do
 #   describe "string concat" do
 #     it "concats two strings with spaces" do
 #       helper.concat_strings("this","that").should == "this that"
 #     end
 #   end
 # end
-describe DeckHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+describe ApplicationHelper do
+  describe "app_name helper" do
+  	it "should return Flashcards::Application::APP_NAME" do
+  		expect(app_name).to match(Flashcards::Application::APP_NAME)
+  	end
+  end
 end
