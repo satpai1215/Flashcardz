@@ -1,6 +1,6 @@
 == FLASHCARDZ
 
-flashcardz.heroku.com
+flashcardz.herokuapp.com
 
 Mobile-friendly flashcard app built with Ruby and Rails.  Allows creation of Flashcard decks for on-the-go studying.
 
